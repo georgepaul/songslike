@@ -281,11 +281,19 @@ render :json => items.to_json
 end
 
 def search_soundcloud query=nil
+# register a client with YOUR_CLIENT_ID as client_id_
+client = SoundCloud.new(:client_id => "2c5ef67435e224e94ea4098c768ac965")
+# get 10 hottest tracks
+tracks = client.get('/tracks', :limit => 10, :order => 'hotness')
+# print each link
 items = Array.new 
-until items.count == 100
-items.push self.search_item
+tracks.each do |track|
+  items.push track
 end
+
 render :json => items.to_json
+
+
 end
 
 #Stats
