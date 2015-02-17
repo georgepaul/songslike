@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 
-    gem 'sqlite3-ruby', '> 1.2.0', :require => 'sqlite3'
+#    gem 'sqlite3-ruby', '> 1.2.0', :require => 'sqlite3'
 
 # Use unicorn as the app server
 # gem 'unicorn'
