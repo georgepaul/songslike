@@ -273,11 +273,14 @@ end
 
 #Search
 def search_youtube query=nil
-items = Array.new 
-until items.count == 100
-items.push self.search_item
-end
-render :json => items.to_json
+require 'youtube_it'
+client = YouTubeIt::Client.new
+client = YouTubeIt::Client.new(:dev_key => "AIzaSyAjFRTZN5nDMMQAetvnsdqeGhVQGvSy25o")
+
+videos = client.videos_by(:query => "penguin")
+
+
+render :json => videos.to_json
 end
 
 def search_soundcloud query=nil
