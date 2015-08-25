@@ -1,5 +1,6 @@
 class StreamController < ApplicationController
 
+
 before_filter :allow_ajax_request_from_other_domains
 
 
@@ -8,6 +9,7 @@ before_filter :allow_ajax_request_from_other_domains
    headers['Access-Control-Request-Method'] = '*'
    headers['Access-Control-Allow-Headers'] = '*'
  end
+
 def search_item
 
 images = ["http://images.thecarconnection.com/lrg/ferrari_100420855_l.jpg",
@@ -138,7 +140,9 @@ def index
 end
 
 # Stream Types
+
 def general
+
 items = Array.new 
 until items.count == 100
 items.push self.stream_item

@@ -16,12 +16,15 @@ Rails.application.routes.draw do
 
 get '/stream' => 'stream#stream', as: 'stream'
 
+
 get '/generalstream' => 'stream#general', as: 'generalstream'
+
 get '/replayvalue' => 'stream#replay_value', as: 'replayvalue'
 get '/listenedto' => 'stream#listened_to', as: 'listenedto'
 get '/playcount' => 'stream#play_count', as: 'playcount'
 get '/favorited' => 'stream#favorited', as: 'favorited'
 
+get '/commentedon' => 'stream#commented_on', as: 'commentedon'
 
 get '/quicklist' => 'stream#quick_play', as: 'quicklist'
 get '/followuser' => 'stream#follow_user', as: 'followuser'
