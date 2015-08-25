@@ -1,0 +1,547 @@
+
+<table>
+
+<tr>
+
+<th>JSON Response</th>
+<th>Description</th>
+<th>Parameters</th>
+<th>Return Type</th>
+
+</tr>
+
+<tr>
+
+<td>
+<a href="/replayvalue">Replay Value</a>
+</td>
+
+<td>
+A Stream Sorted By a Users Replay Value
+</td>
+
+<td>
+AuthenticatedUser
+</td>
+
+<td>
+StreamItem
+</td>
+
+
+</tr>
+
+
+
+<tr>
+<td>
+<a href="/listenedto">Listened To</a>
+</td>
+<td>
+Recently listened to songs by a users friend
+</td>
+<td>
+AuthenticatedUser
+</td>
+
+<td>
+StreamItem
+</td>
+
+</tr>
+
+
+<tr>
+<td>
+<a href="/playcount">Play Count</a>
+</td>
+<td>
+A Stream sorted by Highest Playcount of a users friend
+</td>
+<td>
+AuthenticatedUser
+</td>
+
+<td>
+StreamItem
+</td>
+
+</tr>
+
+
+<tr>
+<td>
+<a href="/favorited">Favorited</a>
+</td>
+<td>
+A Stream of songs favorited by a users friends
+</td>
+<td>
+AuthenticatedUser
+</td>
+
+<td>
+StreamItem
+</td>
+
+</tr>
+
+
+
+<tr>
+<td>
+<a href="/friend_activity">Friend Activity</a>
+</td>
+<td>
+A Stream of a friends activity
+</td>
+<td>
+AuthenticatedUser
+User (friend)
+</td>
+<td>
+StreamItem
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="/friend_favorites">Friend Favorites</a>
+</td>
+<td>
+A stream of a friends favorites
+</td>
+<td>
+group_id
+sort
+AuthenticatedUser
+</td>
+<td>
+StreamItem
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="/everyonegroupstream">Everyone Group Stream</a>
+</td>
+<td>
+Everyones Suggestions to a given group
+</td>
+<td>
+group_id
+sort
+AuthenticatedUser
+</td>
+<td>
+StreamItem
+</td>
+</tr>
+
+<tr>
+
+<td>
+<a href="/megroupstream">Me Group Stream</a>
+</td>
+<td>
+An Individuals Activitiy Within a Group
+</td>
+<td>
+group_id
+sort
+AuthenticatedUser
+</td>
+<td>
+StreamItem
+</td>
+</tr>
+
+<tr>
+
+<td>
+<a href="/user_details">Me</a>
+</td>
+<td>
+A Groups Details
+</td>
+<td>
+group_id
+AuthenticatedUser
+</td>
+<td>
+Group
+</td>
+</tr>
+
+<tr>
+
+<td>
+<a href="/group_details">Group Details</a>
+</td>
+<td>
+A Groups Details
+</td>
+<td>
+group_id
+AuthenticatedUser
+</td>
+<td>
+Group
+</td>
+
+
+</tr>
+
+
+<tr>
+<td>
+<a href="/user_details">User Details</a>
+</td>
+<td>
+A Users Details
+</td>
+<td>
+AuthenticatedUser
+user_id | #user_ids
+</td>
+<td>
+Users
+</td>
+
+</tr>
+
+
+<tr>
+<td>
+<a href="/friend_favorites">Friend Favorites</a>
+</td>
+<td>
+A Stream of Songs Added by a user to their Quicklist via the web interface.
+</td>
+<td>
+AuthenticatedUser
+</td>
+<td>
+StreamItem
+</td>
+
+</tr>
+
+
+<tr>
+<td>
+<a href="/followuser">Follow User</a>
+</td>
+<td>
+Follow a User
+</td>
+<td>
+AuthenticatedUser
+User (To Follow)
+</td>
+
+<td>
+Boolean 
+</td>
+
+</tr>
+
+
+<tr>
+<td>
+<a href="/followgroup">Follow Group</a>
+</td>
+<td>
+Follow a Group
+</td>
+<td>
+AuthenticatedUser
+Group
+</td>
+
+<td>
+Boolean 
+</td>
+</tr>
+
+
+
+<tr>
+<td>
+<a href="/unfollowuser">Unfollow a User</a>
+</td>
+<td>
+A Stream Sorted By a Users Replay Value
+</td>
+<td>
+AuthenticatedUser
+User (User To Follow)
+</td>
+<td>
+Boolean 
+</td>
+</tr>
+
+
+<tr>
+<td>
+<a href="/unfollowgroup">Unfollow a Group</a>
+</td>
+<td>
+Unfollow a Music Group
+</td>
+<td>
+AuthenticatedUser
+GroupID
+</td>
+
+<td>
+Boolean 
+</td>
+</tr>
+
+
+<tr>
+<td>
+<a href="/suggestsongtofriend">Suggest Song To Friend</a>
+</td>
+<td>
+Suggest a Song to a Friend
+</td>
+
+<td>
+SoundCloudStreamItem | YouTubeStreamItem
+User (Suggested To)
+AuthenticatedUser (Suggester)
+</td>
+
+<td>
+Boolean 
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="/suggestsongtogroup">Suggest Song To a Group</a>
+</td>
+<td>
+Suggest a Stream Item Song to a Group
+</td>
+
+<td>
+StreamItem
+User (Suggested To)
+AuthenticatedUser (Suggester)
+</td>
+
+<td>
+Boolean 
+</td>
+</tr>
+
+
+<tr>
+<td>
+<a href="/suggestsearchedsongtofriend">Suggest Searched Song To Friend</a>
+</td>
+<td>
+Suggest a song Searched to a Friend
+</td>
+
+
+<td>
+YoutubeSearchResult | SoundCloudSearchResult
+User (Friend to Recommend To)
+</td>
+
+<td>
+Boolean
+</td>
+</tr>
+
+
+<tr>
+<td>
+<a href="/suggestsearchedsongtogroup">Suggest Searched Song To Group</a>
+</td>
+<td>
+Suggest a song Searched to a Group
+</td>
+
+
+<td>
+YoutubeSearchResult | SoundCloudSearchResult
+Group
+</td>
+
+<td>
+Boolean
+</td>
+</tr>
+
+
+
+
+<tr>
+<td>
+<a href="/favorite">Favorite</a>
+</td>
+<td>
+Favorite a Song
+</td>
+
+
+<td>
+AuthenticatedUser
+StreamItem
+</td>
+
+<td>
+Boolean
+</td>
+</tr>
+
+
+
+
+
+
+
+<tr>
+<td>
+<a href="/searchyoutube">Search Youtube</a>
+</td>
+<td>
+Search Youtube For Results
+</td>
+
+<td>
+String - Query
+</td>
+
+<td>
+YouTubeSearchResult
+</td>
+</tr>
+
+
+
+
+
+
+
+<tr>
+<td>
+<a href="/searchsoundcloud">Search SoundCloud</a>
+</td>
+<td>
+Search SoundCloud For Results
+</td>
+
+<td>
+String - Query
+</td>
+
+<td>
+SoundCloudSearchResult
+</td>
+</tr>
+
+
+<tr>
+<td>
+<a href="/recordexposure">Record Exposure</a>
+</td>
+<td>
+Record The Exposure of Content From a User
+</td>
+<td>
+AuthenticatedUser
+StreamItem
+</td>
+
+<td>
+Boolean
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="/login">Login</a>
+<td>
+Submit client side authenticated user, to return Related User
+</td>
+
+<td>
+AuthenticatedUser
+</td>
+
+<td>
+Boolean
+User
+</td>
+</tr>
+
+
+
+<tr>
+<td>
+<a href="/quicklist">Quick Play</a>
+<td>
+Submit client side authenticated user, to return Related User
+</td>
+<td>
+AuthenticatedUser
+</td>
+<td>
+Boolean
+User
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="/friendfilterplay">Friend FilterPlay</a>
+<td>
+Submit client side authenticated user, to return Related User
+</td>
+<td>
+AuthenticatedUser
+</td>
+<td>
+Boolean
+User
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="/addfriendtofilter">Add Friend To Filter</a>
+<td>
+Submit client side authenticated user, to return Related User
+</td>
+<td>
+AuthenticatedUser
+</td>
+<td>
+Boolean
+User
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="/removefriendfromfilter">Remove Friend From Filter</a>
+<td>
+Submit client side authenticated user, to return Related User
+</td>
+<td>
+AuthenticatedUser
+</td>
+<td>
+Boolean
+User
+</td>
+</tr>
+
+</table>
