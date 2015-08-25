@@ -116,10 +116,21 @@ return {
 		'stat_8' => rand(10...242), 
 		'stat_9' => rand(10...242),
 		'stat_10' => rand(10...242), 
-		'image_url' => "http://jaredbraden.com/wp-content/uploads/2014/07/nim.png",
+		'image_url' => "http://mytjcnews.com/wp-content/uploads/2015/03/us-news-medical-marijuana-1-tb.jpg",
 		'new_songs' => rand(10...242)
 	}
 end
+
+def playlist_item
+return {
+		'name' => "Some Playlist Name", # Plays
+		'image' => "http://mytjcnews.com/wp-content/uploads/2015/03/us-news-medical-marijuana-1-tb.jpg", # Suggestions
+		'song_count' => rand(10...242), # Followers
+		'listeners_count' => rand(10...242), # 
+		'friend_listeners_count' => rand(10...242), 
+	}
+end
+
 
 def sl_boolean
 return {
@@ -149,6 +160,22 @@ items.push self.stream_item
 end
 render :json => items.to_json
 end	
+
+def playlists
+items = Array.new 
+until items.count == 100
+items.push self.playlist_item
+end
+render :json => items.to_json
+end
+
+def friendlists
+items = Array.new 
+until items.count == 100
+items.push self.playlist_item
+end
+render :json => items.to_json
+end
 
 
 def listened_to
@@ -207,7 +234,7 @@ end
 render :json => items.to_json
 end
 
-def me_group_stream
+def me_group_stream group_id=nil
 	items = Array.new 
 until items.count == 100
 items.push self.stream_item

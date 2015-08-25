@@ -19,6 +19,9 @@ get '/stream' => 'stream#stream', as: 'stream'
 
 get '/generalstream' => 'stream#general', as: 'generalstream'
 
+get '/friendlists' => 'stream#friendlists', as: 'friendlists'
+get '/playlists' => 'stream#playlists', as: 'playlists'
+
 get '/replayvalue' => 'stream#replay_value', as: 'replayvalue'
 get '/listenedto' => 'stream#listened_to', as: 'listenedto'
 get '/playcount' => 'stream#play_count', as: 'playcount'
