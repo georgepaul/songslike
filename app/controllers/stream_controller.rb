@@ -95,7 +95,7 @@ images = ["http://images.thecarconnection.com/lrg/ferrari_100420855_l.jpg",
 "http://www.audiocastle.co/uploads/news/SADA_428_293.jpg"]
 
 return {
-		'song_name' => "A Songs Name", 
+		'song_name' => "Bryson Tiller - Don't", 
 		'replay_average' => rand(10...242),
 		'image_url' => images[rand(1...30)], 
 		'stream_id' => rand(1...30),
@@ -134,7 +134,8 @@ return {
 		'friend_listeners_count' => rand(10...242), 
 		'story' => rand(10...242),
 		'icon' => "" ,
-		'id' => rand(10...242)
+		'id' => rand(10...242),
+		'created_date' => rand(10...242)
 	}
 end
 
@@ -189,11 +190,17 @@ end
 
 def searchplaylists 
 items = Array.new 
+
+if params[:q].length > 1
 until items.count == 100
 x =	self.playlist_item
 x["name"]= "SEARCH PLAYLIST"
 items.push x
 end
+else
+logger.warn( params[:q].length )
+end
+
 render :json => items.to_json
 end
 
