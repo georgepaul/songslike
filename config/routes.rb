@@ -21,6 +21,9 @@ get '/generalstream' => 'stream#general', as: 'generalstream'
 
 get '/friendlists' => 'stream#friendlists', as: 'friendlists'
 get '/playlists' => 'stream#playlists', as: 'playlists'
+get '/friendslist' => 'stream#friendslist', as: 'friendslist'
+get '/searchyt/:q' => 'stream#searchyt', as: 'searchyt'
+
 
 get '/replayvalue' => 'stream#replay_value', as: 'replayvalue'
 get '/listenedto' => 'stream#listened_to', as: 'listenedto'

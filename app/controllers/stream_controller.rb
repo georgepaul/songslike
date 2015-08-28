@@ -2,7 +2,7 @@ class StreamController < ApplicationController
 
 
 before_filter :allow_ajax_request_from_other_domains
-
+skip_before_filter :verify_authenticity_token
 
  def allow_ajax_request_from_other_domains
    headers['Access-Control-Allow-Origin'] = '*'
@@ -128,6 +128,20 @@ return {
 		'song_count' => rand(10...242), # Followers
 		'listeners_count' => rand(10...242), # 
 		'friend_listeners_count' => rand(10...242), 
+		'story' => rand(10...242),
+		'icon' => "" ,
+		'id' => rand(10...242)
+	}
+end
+
+def friend_item
+return {
+		'name' => "Some Friends Name", # Plays
+		'image' => "http://mytjcnews.com/wp-content/uploads/2015/03/us-news-medical-marijuana-1-tb.jpg", # Suggestions
+		'song_count' => rand(10...242), # Followers
+		'listeners_count' => rand(10...242), # 
+		'joindate' => rand(10...242) ,
+		'id' => rand(10...242)
 	}
 end
 
@@ -193,6 +207,15 @@ items.push self.stream_item
 end
 render :json => items.to_json
 end	
+
+def friendslist
+items = Array.new 
+until items.count == 100
+items.push self.friend_item
+end
+render :json => items.to_json
+end
+
 
 def favorited
 	items = Array.new 
@@ -308,13 +331,19 @@ def favorite song_id=nil
 end
 
 #Search
-def search_youtube query=nil
-require 'youtube_it'
-client = YouTubeIt::Client.new
-client = YouTubeIt::Client.new(:dev_key => "AIzaSyAjFRTZN5nDMMQAetvnsdqeGhVQGvSy25o")
+def searchyt query=nil
+	allow_ajax_request_from_other_domains
+options = { developer_key: "AIzaSyAho043-lWs9GQUf8NGwJovYEYWdcq2Dxg",
+             application_name: 'yourub',
+             application_version: 2.0,
+             log_level: 3 }
 
-videos = client.videos_by(:query => "penguin")
+client = Yourub::Client.new(options)
 
+videos = Array.new
+client.search(query: params[:q]) do |v|
+  videos.push v
+end
 
 render :json => videos.to_json
 end

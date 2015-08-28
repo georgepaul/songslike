@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'pg'
 
-gem 'youtube_it'
+gem 'yourub'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
