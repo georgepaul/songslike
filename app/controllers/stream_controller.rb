@@ -95,11 +95,15 @@ images = ["http://images.thecarconnection.com/lrg/ferrari_100420855_l.jpg",
 "http://www.audiocastle.co/uploads/news/SADA_428_293.jpg"]
 
 return {
-		'song_name' => SecureRandom.hex(13), 
+		'song_name' => "A Songs Name", 
 		'replay_average' => rand(10...242),
 		'image_url' => images[rand(1...30)], 
 		'stream_id' => rand(1...30),
-		'suggested_by' => SecureRandom.hex(13), 
+		'suggested_by' => "Paul C. George",
+		'suggested_by_image' => images[rand(1...30)],
+		'suggestion_story' => "Replayed",
+		'icon_class' => "ion-loop",
+		'youtube_id' => "08qJimb9sKU"
 	}
 end
 
@@ -182,6 +186,17 @@ items.push self.playlist_item
 end
 render :json => items.to_json
 end
+
+def searchplaylists 
+items = Array.new 
+until items.count == 100
+x =	self.playlist_item
+x["name"]= "SEARCH PLAYLIST"
+items.push x
+end
+render :json => items.to_json
+end
+
 
 def friendlists
 items = Array.new 
@@ -331,6 +346,8 @@ def favorite song_id=nil
 end
 
 #Search
+
+
 def searchyt query=nil
 	allow_ajax_request_from_other_domains
 options = { developer_key: "AIzaSyAho043-lWs9GQUf8NGwJovYEYWdcq2Dxg",

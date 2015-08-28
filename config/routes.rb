@@ -23,7 +23,10 @@ get '/friendlists' => 'stream#friendlists', as: 'friendlists'
 get '/playlists' => 'stream#playlists', as: 'playlists'
 get '/friendslist' => 'stream#friendslist', as: 'friendslist'
 get '/searchyt/:q' => 'stream#searchyt', as: 'searchyt'
+get '/searchplaylists/:q' => 'stream#searchplaylists', as: 'searchplaylists'
 
+get '/user/:id' => 'stream#userstream', as: 'userstreams'
+get '/playlist/:id' => 'stream#playliststream', as: 'playliststream'
 
 get '/replayvalue' => 'stream#replay_value', as: 'replayvalue'
 get '/listenedto' => 'stream#listened_to', as: 'listenedto'
