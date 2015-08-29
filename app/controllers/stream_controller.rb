@@ -135,7 +135,8 @@ return {
 		'story' => rand(10...242),
 		'icon' => "" ,
 		'id' => rand(10...242),
-		'created_date' => rand(10...242)
+		'created_date' => rand(10...242),
+		'description' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 	}
 end
 
@@ -179,6 +180,36 @@ items.push self.stream_item
 end
 render :json => items.to_json
 end	
+
+def playlist
+playlist = self.playlist_item
+meStream = Array.new
+worldwideStream = Array.new
+friendStream = Array.new
+items = Hash.new
+until meStream.count == 100
+meStream.push self.stream_item
+end
+until worldwideStream.count == 100
+worldwideStream.push self.stream_item
+end
+until friendStream.count == 100
+friendStream.push self.stream_item
+end
+items["playlist"] = playlist
+items["worldwidestream"] = worldwideStream
+items["me"] = meStream
+items["friends"] = friendStream
+render :json => items.to_json
+end
+
+def addtoplaylist
+allow_ajax_request_from_other_domains
+logger.warn(params[:videoId])
+logger.warn(params[:playlistId])	
+
+render :json => self.sl_boolean
+end
 
 def playlists
 items = Array.new 
@@ -356,19 +387,16 @@ end
 
 
 def searchyt query=nil
-	allow_ajax_request_from_other_domains
-options = { developer_key: "AIzaSyAho043-lWs9GQUf8NGwJovYEYWdcq2Dxg",
+options = { developer_key: 'AIzaSyApcibyTcv-gbqE1Kubk5nzdKmsN3Nf07Y',
              application_name: 'yourub',
              application_version: 2.0,
              log_level: 3 }
 
 client = Yourub::Client.new(options)
-
 videos = Array.new
 client.search(query: params[:q]) do |v|
-  videos.push v
+videos.push v
 end
-
 render :json => videos.to_json
 end
 

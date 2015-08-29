@@ -21,12 +21,15 @@ get '/generalstream' => 'stream#general', as: 'generalstream'
 
 get '/friendlists' => 'stream#friendlists', as: 'friendlists'
 get '/playlists' => 'stream#playlists', as: 'playlists'
+
 get '/friendslist' => 'stream#friendslist', as: 'friendslist'
 get '/searchyt/:q' => 'stream#searchyt', as: 'searchyt'
 get '/searchplaylists/:q' => 'stream#searchplaylists', as: 'searchplaylists'
 
-get '/user/:id' => 'stream#userstream', as: 'userstreams'
-get '/playlist/:id' => 'stream#playliststream', as: 'playliststream'
+get '/addtoplaylist/:videoId/:playlistId' => 'stream#addtoplaylist', as: 'addtoplaylist'
+
+get '/user/:id' => 'stream#user', as: 'user'
+get '/playlist/:id' => 'stream#playlist', as: 'playlist'
 
 get '/replayvalue' => 'stream#replay_value', as: 'replayvalue'
 get '/listenedto' => 'stream#listened_to', as: 'listenedto'
