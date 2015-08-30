@@ -101,9 +101,11 @@ return {
 		'stream_id' => rand(1...30),
 		'suggested_by' => "Paul C. George",
 		'suggested_by_image' => images[rand(1...30)],
+		'suggested_to_name' => "Love Songs",
 		'suggestion_story' => "Replayed",
 		'icon_class' => "ion-loop",
-		'youtube_id' => "08qJimb9sKU"
+		'youtube_id' => "08qJimb9sKU",
+	
 	}
 end
 
@@ -219,6 +221,9 @@ end
 render :json => items.to_json
 end
 
+
+
+
 def searchplaylists 
 items = Array.new 
 
@@ -269,6 +274,19 @@ end
 render :json => items.to_json
 end
 
+def friend
+result = Hash.new 
+friend = self.friend_item
+stream = Array.new
+
+until stream.count == 100
+stream.push self.stream_item
+end
+
+result["results"] = stream
+result["friend"] = friend
+render :json => result.to_json
+end
 
 def favorited
 	items = Array.new 

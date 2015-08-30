@@ -28,7 +28,7 @@ get '/searchplaylists/:q' => 'stream#searchplaylists', as: 'searchplaylists'
 
 get '/addtoplaylist/:videoId/:playlistId' => 'stream#addtoplaylist', as: 'addtoplaylist'
 
-get '/user/:id' => 'stream#user', as: 'user'
+get '/friend/:id' => 'stream#friend', as: 'friend'
 get '/playlist/:id' => 'stream#playlist', as: 'playlist'
 
 get '/replayvalue' => 'stream#replay_value', as: 'replayvalue'
