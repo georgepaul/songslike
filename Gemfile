@@ -16,6 +16,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'pg'
 
+gem "koala"
+
 gem 'yourub'
 
 # Use jquery as the JavaScript library

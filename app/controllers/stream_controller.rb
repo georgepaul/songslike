@@ -445,7 +445,16 @@ render :json => items.to_json
 end
 
 def login
-render :json => user_item.to_json
+
+@graph = Koala::Facebook::API.new(params[:access_token]) unless params[:access_token].blank?
+
+begin
+	@response = @graph.get_object("me")
+rescue Exception => e
+	@@response = e
+end
+
+render :json => @response.to_json
 end
 
 def quick_play
