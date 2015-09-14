@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
 get '/stream' => 'stream#stream', as: 'stream'
 
+post '/login/' => 'stream#login', as: 'login'
 
 get '/generalstream' => 'stream#general', as: 'generalstream'
 
@@ -67,8 +68,8 @@ get '/friendfilterplay' => 'stream#friend_filter_play', as: 'friendfilterplay'
 get '/addfriendtofilter' => 'stream#add_friend_to_filter', as: 'addfriendtofilter'
 get '/removefriendfromfilter' => 'stream#remove_friend_from_filter', as: 'removefriendfromfilter'
 
-get '/login/:access_token' => 'stream#login', as: 'login_auths'
-get '/login/' => 'stream#login', as: 'login'
+#get '/login/:access_token' => 'stream#login', as: 'login_auths'
+
 
 get '/listenedtosuggestion' => 'stream#listened_to_suggestion', as: 'listenedtosuggestion'
 

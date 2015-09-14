@@ -445,16 +445,20 @@ render :json => items.to_json
 end
 
 def login
+allow_ajax_request_from_other_domains
+@user = User.find_by_facebook_id params["uid"]
 
-@graph = Koala::Facebook::API.new(params[:access_token]) unless params[:access_token].blank?
-
-begin
-	@response = @graph.get_object("me")
-rescue Exception => e
-	@@response = e
+if @user.blank?
+@user = User.user_from_facebook_mobile params
+else
+logger.warn(@user[0].inspect)
+if @user[0].token != params[:access_token]
+		@user[0].token = params[:access_token]
+		@user[0].save
+	end
 end
 
-render :json => @response.to_json
+render :json => @user.to_json
 end
 
 def quick_play
