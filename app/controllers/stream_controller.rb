@@ -461,7 +461,7 @@ end
 =end
 
 u = User.new
-u.name = "test success"
+u.name =  params[:name].blank? ? "blankNAme" : params[:name]
 u.save!
 
 
