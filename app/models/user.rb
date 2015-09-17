@@ -5,10 +5,10 @@ def self.user_from_facebook_mobile params
 
 	u = User.new
 	u.name = params[:name]
-	u.image_url = params[:image_url]
+	u.image_url = params[:picture]
 	u.gender = params[:gender]
 	u.location = params[:location]
-	u.token = params[:access_token]
+	u.token = params[:token]
 	u.uid = params[:uid]
 	u.save!
 
