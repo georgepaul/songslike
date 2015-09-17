@@ -447,7 +447,6 @@ end
 def login
 allow_ajax_request_from_other_domains
 
-=begin
 @user = User.find_by_facebook_id params["uid"]
 if @user.blank?
 @user = User.user_from_facebook_mobile params
@@ -458,13 +457,6 @@ if @user[0].token != params[:access_token]
 		@user[0].save
 	end
 end	
-=end
-
-u = User.new
-u.name =  params[:name].blank? ? "blankNAme" : params[:name]
-u.save!
-
-
 
 render :json => @user.to_json
 end
