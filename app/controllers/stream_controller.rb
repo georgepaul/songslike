@@ -221,6 +221,22 @@ end
 render :json => items.to_json
 end
 
+def createplaylist
+
+	playlist = Playlist.new
+	playlist.description = params[:description]
+	playlist.name = params[:title]
+	playlist.created_by = params[:uid]
+	
+	if playlist.save! 
+		render :json => {"success" => true, "id" => playlist.id}.to_json
+		else
+		render :json => {"success" => false, "id" => 0}.to_json
+	end
+
+
+end
+
 
 
 
@@ -404,17 +420,9 @@ end
 #Search
 
 
-def searchyt query=nil
-options = { developer_key: 'AIzaSyApcibyTcv-gbqE1Kubk5nzdKmsN3Nf07Y',
-             application_name: 'yourub',
-             application_version: 2.0,
-             log_level: 3 }
+def searchyt
 
-client = Yourub::Client.new(options)
-videos = Array.new
-client.search(query: params[:q]) do |v|
-videos.push v
-end
+videos = Ytcontent.search params[:q]
 render :json => videos.to_json
 end
 

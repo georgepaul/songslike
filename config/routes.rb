@@ -32,6 +32,12 @@ get '/addtoplaylist/:videoId/:playlistId' => 'stream#addtoplaylist', as: 'addtop
 get '/friend/:id' => 'stream#friend', as: 'friend'
 get '/playlist/:id' => 'stream#playlist', as: 'playlist'
 
+post '/createplaylist/' => 'stream#createplaylist', as: 'createplaylist'
+
+
+
+
+
 get '/replayvalue' => 'stream#replay_value', as: 'replayvalue'
 get '/listenedto' => 'stream#listened_to', as: 'listenedto'
 get '/playcount' => 'stream#play_count', as: 'playcount'
