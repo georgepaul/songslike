@@ -19,7 +19,8 @@ gem 'pg'
 gem "koala"
 
 gem "httparty"
-
+gem 'therubyracer'
+gem 'execjs'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
