@@ -105,7 +105,7 @@ return {
 		'suggestion_story' => "Replayed",
 		'icon_class' => "ion-loop",
 		'youtube_id' => "08qJimb9sKU",
-	
+		'unique_dom_id' => rand(9999...100000),
 	}
 end
 
