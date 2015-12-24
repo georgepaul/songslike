@@ -26,15 +26,16 @@ get '/playlists' => 'stream#playlists', as: 'playlists'
 get '/friendslist' => 'stream#friendslist', as: 'friendslist'
 get '/searchyt/:q' => 'stream#searchyt', as: 'searchyt'
 get '/searchplaylists/:q' => 'stream#searchplaylists', as: 'searchplaylists'
+get '/searchplaylists/' => 'stream#searchplaylists', as: 'searchplaylistsdefault'
 
-get '/addtoplaylist/:videoId/:playlistId' => 'stream#addtoplaylist', as: 'addtoplaylist'
+post '/addtoplaylist' => 'stream#addtoplaylist', as: 'addtoplaylist'
 
 get '/friend/:id' => 'stream#friend', as: 'friend'
 get '/playlist/:id' => 'stream#playlist', as: 'playlist'
 
 post '/createplaylist/' => 'stream#createplaylist', as: 'createplaylist'
-
-
+post '/comment/' => 'stream#comment', as: 'comment'
+get '/comments/:id' => 'stream#comments', as: 'comments'
 
 
 

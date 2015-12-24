@@ -243,14 +243,11 @@ end
 def searchplaylists 
 items = Array.new 
 
-if params[:q].length > 1
+
 until items.count == 100
 x =	self.playlist_item
 x["name"]= "SEARCH PLAYLIST"
 items.push x
-end
-else
-logger.warn( params[:q].length )
 end
 
 render :json => items.to_json
@@ -492,6 +489,24 @@ end
 def remove_friend_from_filter
 	render :json => sl_boolean.to_json
 end	
+
+
+
+def comments sid
+
+	comments = Comment.where(["resource_id = ?",params["resource_id"]])
+	render :json => items.to_json
+end
+
+def comment 
+	c = Comment.new 
+	c.author_id = params[:author_id]
+	c.content = params[:content]
+	c.resource_id = params[:resource_id]
+	c.resource_type = "post"
+	c.is_hidden = 0;
+	c.save
+end
 
 
 
