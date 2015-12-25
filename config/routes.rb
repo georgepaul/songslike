@@ -28,14 +28,23 @@ get '/searchyt/:q' => 'stream#searchyt', as: 'searchyt'
 get '/searchplaylists/:q' => 'stream#searchplaylists', as: 'searchplaylists'
 get '/searchplaylists/' => 'stream#searchplaylists', as: 'searchplaylistsdefault'
 
+get '/searchfriends/:q' => 'stream#searchfriends', as: 'searchfriends'
+
+get '/searchfriends/' => 'stream#searchfriends', as: 'searchfriendsdefault'
+
+post '/sendtofriend/' => 'stream#sendtofriend', as: 'sendtofriend'
+
 post '/addtoplaylist' => 'stream#addtoplaylist', as: 'addtoplaylist'
 
 get '/friend/:id' => 'stream#friend', as: 'friend'
 get '/playlist/:id' => 'stream#playlist', as: 'playlist'
 
 post '/createplaylist/' => 'stream#createplaylist', as: 'createplaylist'
+
 post '/comment/' => 'stream#comment', as: 'comment'
-get '/comments/:id' => 'stream#comments', as: 'comments'
+
+get '/comments/:resource_id' => 'stream#comments', as: 'comments'
+
 
 
 

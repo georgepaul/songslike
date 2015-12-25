@@ -111,11 +111,12 @@ end
 
 def user_item
 return {
-		'user_id' => "2", # Plays
-		'stat_1' => rand(10...242), # Suggestions
-		'stat_2' => rand(10...242), # Followers
-		'stat_3' => rand(10...242), # 
-		'stat_4' => rand(10...242), 
+		'id' => rand(10...36242), # Plays
+		'first_name' => "fn_" + rand(10...242).to_s, # Suggestions
+		'last_name' => "fn_" + rand(10...242).to_s, # Followers
+		'name' => "somename",
+		'song_count' => rand(10...242), # 
+		'listeners_count' => rand(10...242), 
 		'stat_5' => rand(10...242),
 		'stat_6' => rand(10...242), 
 		'stat_7' => rand(1...30),
@@ -490,15 +491,41 @@ def remove_friend_from_filter
 	render :json => sl_boolean.to_json
 end	
 
+def searchfriends
 
+items = Array.new 
+until items.count == 100
+items.push self.user_item
+end
+render :json => items.to_json
 
-def comments sid
-
-	comments = Comment.where(["resource_id = ?",params["resource_id"]])
-	render :json => items.to_json
 end
 
+def sendtofriend
+
+items = Array.new 
+until items.count == 100
+items.push self.user_item
+end
+render :json => items.to_json
+
+end
+
+
+
+def comments 
+allow_ajax_request_from_other_domains
+
+@results = Comment.find_by_sql ["SELECT profiles.*,comments.* FROM comments,profiles WHERE comments.author_id = profiles.id && comments.resource_id = ?", params[:resource_id]]
+
+render :json => @results.to_json
+end
+
+
+
+
 def comment 
+	allow_ajax_request_from_other_domains
 	c = Comment.new 
 	c.author_id = params[:author_id]
 	c.content = params[:content]
@@ -506,6 +533,12 @@ def comment
 	c.resource_type = "post"
 	c.is_hidden = 0;
 	c.save
+
+
+@results = Comment.find_by_sql ["SELECT profiles.*,comments.* FROM comments,profiles WHERE comments.author_id = profiles.id && comments.resource_id = ?", params[:resource_id]]
+
+render :json => @results.to_json
+
 end
 
 
