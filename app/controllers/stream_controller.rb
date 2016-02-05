@@ -452,19 +452,23 @@ end
 
 def login
 allow_ajax_request_from_other_domains
+@user = Profile.find_by_facebook_id params["facebook_id"]
 
-@user = User.find_by_facebook_id params["uid"]
 if @user.blank?
-@user = User.user_from_facebook_mobile params
-else
-logger.warn(@user[0].inspect)
-if @user[0].token != params[:token]
-		@user[0].token = params[:token]
-		@user[0].save!
-	end
+@user = Profile.user_from_facebook_mobile(params)
 end	
 
+if @user.blank?
+	render :json => ["Error: No User Found, Cannot Create User"]
+else
+
+
+if  @user.facebook_token != params[:facebook_token]
+		@user.facebook_token = params[:facebook_token]
+		@user.save!
+	end
 render :json => @user.to_json
+end
 end
 
 def quick_play
